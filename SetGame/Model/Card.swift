@@ -19,6 +19,7 @@ struct Card: Equatable {
         case second
         case third
         
+        var idx: Int { return (self.rawValue - 1)}
         //var allCases: [CharacteristicVariant] { return [.first, .second, .third] }
     }
     

@@ -11,11 +11,15 @@ import Foundation
 // our game struct
 struct SetGame {
     
+    private(set) var score = 0
+    
     private var deck = GameDeck()
     private(set) var cardsInGame = [Card]()
     private(set) var selectedCards = [Card]()
     private(set) var removedCards = [Card]()
     private(set) var cardsTryMatched = [Card]()
+    
+    var deckCount: Int { return deck.cards.count}
     
     var isSet: Bool? {
         get {
@@ -24,6 +28,12 @@ struct SetGame {
         }
         set {
             if newValue != nil {
+                if newValue! {
+                    score += 20
+                }
+                else {
+                    score -= 10
+                }
                 cardsTryMatched = selectedCards
                 selectedCards.removeAll()
             } else {
@@ -67,6 +77,7 @@ struct SetGame {
             } else {
                 selectedCards.inOut(element: chosenCard)
             }
+            score -= 1
         }
         
     }
