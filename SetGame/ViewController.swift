@@ -17,6 +17,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        updateViewFromModel()
+    }
+    
+    func updateViewFromModel() {
+        for index in buttonsArray.indices {
+            let button = buttonsArray[index]
+            button.setTitle(String(index), for: .normal)
+            if index < 12 {
+                button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+            }
+        }
     }
     
     @IBAction func buttonPushed(_ sender: UIButton) {
